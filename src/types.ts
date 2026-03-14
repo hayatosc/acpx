@@ -131,6 +131,7 @@ export type OutputFormatterContext = {
 export type OutputPolicy = {
   format: OutputFormat;
   jsonStrict: boolean;
+  suppressReads: boolean;
   suppressNonJsonStderr: boolean;
   queueErrorAlreadyEmitted: boolean;
   suppressSdkConsoleErrors: boolean;

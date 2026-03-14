@@ -205,6 +205,7 @@ acpx --format text codex 'summarize your findings'
 acpx --format json codex exec 'review changed files'
 acpx --format json --json-strict codex exec 'machine-safe JSON only'
 acpx --format quiet codex 'final recommendation only'
+acpx --suppress-reads codex exec 'show tool activity without dumping file bodies'
 
 acpx --timeout 90 codex 'investigate intermittent test timeout'
 acpx --ttl 30 codex 'keep queue owner alive for quick follow-ups'
@@ -257,7 +258,15 @@ acpx --format json --json-strict codex exec 'review this PR'
 
 # quiet: final assistant text only
 acpx --format quiet codex 'give me a 3-line summary'
+
+# suppress read payloads while keeping the selected output format
+acpx --suppress-reads codex exec 'inspect the repo and report tool usage'
 ```
+
+- `text`: human-readable stream with assistant text and tool updates
+- `json`: raw ACP NDJSON stream for automation
+- `quiet`: final assistant text only
+- `--suppress-reads`: replace raw read-file contents with `[read output suppressed]` in `text` and `json` output
 
 JSON events include a stable envelope for correlation:
 
